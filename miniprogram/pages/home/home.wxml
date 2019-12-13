@@ -1,0 +1,27 @@
+<view class="container">
+  <swiper autoplay indicator-dots indicator-color="white" indicator-active-color="gray" circular interval="2000">
+    <swiper-item wx:for="{{advertise}}" wx:key="_id">
+      <image mode="widthFix" src="{{item.icon}}"></image>
+    </swiper-item>
+  </swiper>
+  <view class="type-list">
+    <van-tabs bind:click="onClick" active="{{ active }}" line-width='0' custom-class="nav" tab-class="nav-tab" tab-active-class="nav-tab-active">
+      <van-tab data-id="{{item._id}}" wx:for="{{category}}" wx:key="_id" title="{{item.name}}"></van-tab>
+    </van-tabs>
+  </view>
+  <view class="card-list">
+    <van-card wx:for="{{goods}}" wx:key="_id" thumb-class="card-thumb" custom-class="card-custom" price-class="card-price" price="{{item.nowPrice}}" origin-price="{{item.underlinePrice}}" thumb="{{ item.icon }}">
+      <view slot="title">
+        <van-tag type="warning">{{item.from}}</van-tag>
+      </view>
+      <view slot="desc" class="card-desc">
+        {{item.info}}
+        <van-tag class="desc-tag" type="warning">{{item.ticket}}</van-tag>
+      </view>
+      <view slot="tags">
+        <van-button round size="mini" type="danger" class="mini-button" data-item="{{item}}" bindtap="copy">复制购买</van-button>
+      </view>
+    </van-card>
+  </view>
+</view>
+<tabbar proActive='0'></tabbar>

@@ -1,0 +1,5 @@
+<van-button type="warning" open-type="contact">客服</van-button>  
+<van-button type="info" bindtap="copy">复制</van-button>
+<van-button type="primary" bindtap="query">请求</van-button>
+<tabbar proActive='1'></tabbar>
+

@@ -1,0 +1,8 @@
+<van-tabbar active="{{ active }}" bind:change="onChange" class="tabbar">
+  <van-tabbar-item icon="home-o" data-url='pages/home/home' bindtap="gotoUrl">
+     京东商城
+  </van-tabbar-item>
+  <van-tabbar-item icon="setting-o" data-url='pages/main/index' bindtap="gotoUrl">
+     说明
+  </van-tabbar-item>
+</van-tabbar>

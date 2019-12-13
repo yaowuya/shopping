@@ -1,0 +1,14 @@
+/**app.wxss**/
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #f6f6f6;
+  /* height: calc(100vh - 100rpx);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0; */
+}
