@@ -8,7 +8,7 @@ Page({
     advertise: [],
     category: [],
     goods: [],
-    active: '',
+    active: 0,
     isBorder: false,
     pageNum: 1,
     pageSize: 5,
@@ -27,7 +27,7 @@ Page({
     })
     let self = this
     wx.request({
-      url: 'http://192.168.242.1:3000/mini/photo',
+      url: 'http://139.224.188.37/mini/photo',
       method: 'GET',
       data: {},
       header: {
@@ -50,7 +50,7 @@ Page({
     })
     let self = this
     wx.request({
-      url: 'http://192.168.242.1:3000/mini/category',
+      url: 'http://139.224.188.37/mini/category/cate',
       method: 'GET',
       data: {},
       header: {
@@ -61,7 +61,6 @@ Page({
         self.setData({
           category: res.data
         })
-        self.data.active = self.data.category[0]._id
         self.data.cate = self.data.category[0]._id
         self.queryGoods()
       },
@@ -76,7 +75,7 @@ Page({
     })
     let self = this
     wx.request({
-      url: 'http://192.168.242.1:3000/mini/good/good',
+      url: 'http://139.224.188.37/mini/good/good',
       method: 'POST',
       data: {
         pageNum: self.data.pageNum,
@@ -101,18 +100,17 @@ Page({
   onClick(event) {
     // this.queryGoods()
     // this.data.active = event.detail.name
-    // this.data.cate = event.detail.name
-    console.log(event)
-    // this.setData({
-    //   category: []
-    // })
-    // wx.nextTick(this.queryGoods())
-
+    this.setData({
+      cate: event.detail.name,
+      goods: [],
+      pageNum: 1
+    })
+    this.queryGoods()
   },
   copy(event) {
     let item = event.target.dataset.item
     wx.setClipboardData({
-      data: item.info + "\n" + item.name + "\n" + item.from,
+      data: item.info + "\n" + item.name + "\n" + item.from + "\n" + item.url,
       success() {
         console.log('success')
       }
